@@ -25,13 +25,13 @@ Parse SIP requests from `.txt` files following the RFC3261 format with this simp
 1. Clone the repository:
 
 ```bash
-git clone <repository_url>
+git clone https://github.com/mehrnaz-mh/cli-program.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd <directory_name>
+cd cli-program
 ```
 
 3. (Optional) Create a virtual environment:
