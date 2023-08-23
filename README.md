@@ -37,7 +37,7 @@ cd cli-program
 3. (Optional) Create a virtual environment:
 
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # On Windows: .\venv\Scripts\activate
 ```
 
@@ -46,7 +46,7 @@ source venv/bin/activate  # On Windows: .\venv\Scripts\activate
 Once you've download the source code and run the installation steps, you can run the following command to access the application's usage description:
 
 ```bash
-$ python -m cli <filename>.txt --help
+$ python3 -m cli <filename>.txt --help
 usage: cli.py [-h] [-p] [-e HEADER] filename
 
 Parse a SIP request in a .txt file.
@@ -67,13 +67,13 @@ options:
 ### Parse and Display SIP Details
 
 ```bash
-python -m cli <filename>.txt --print
+python3 -m cli <filename>.txt --print
 ```
 
 ### Check Header Existence
 
 ```bash
-python -m cli <filename>.txt --exists <header_name>
+python3 -m cli <filename>.txt --exists <header_name>
 ```
 
 Replace `<filename>` with the name of your `.txt` file containing the SIP request and `<header_name>` with the header you want to check.
