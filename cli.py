@@ -1,18 +1,23 @@
 import argparse
 import sip_parser
 
+
 # Main function definition.
 def main():
     # Create a new argument parser object.
-    parser = argparse.ArgumentParser(description='Parse a SIP request in a .txt file.')
-    
-    parser.add_argument('filename', type=str, help='Path to the .txt file containing the SIP request.')
-    parser.add_argument('-p', '--print', action='store_true', help='Print the parsed content of the SIP request.')
-    parser.add_argument('-e', '--exists', type=str, metavar='HEADER', help='Check if the given header exists in the SIP request.')
+    parser = argparse.ArgumentParser(
+        description='Parse a SIP request in a .txt file.')
+
+    parser.add_argument(
+        'filename', type=str, help='Path to the .txt file containing the SIP request.')
+    parser.add_argument('-p', '--print', action='store_true',
+                        help='Print the parsed content of the SIP request.')
+    parser.add_argument('-e', '--exists', type=str, metavar='HEADER',
+                        help='Check if the given header exists in the SIP request.')
 
     # Parse the arguments provided by the user when running the program.
     args = parser.parse_args()
-        
+
     content = sip_parser.read_sip_request(args.filename)
     method, request_uri, headers, body = sip_parser.parse_sip_request(content)
 

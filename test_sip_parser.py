@@ -16,6 +16,7 @@ Content-Length: 3
 
 abc"""
 
+
 # Test the read_sip_request function
 def test_read_sip_request_existing_file_returns_content():
     with open("temp_test_file.txt", "w") as file:
@@ -28,8 +29,9 @@ def test_read_sip_request_existing_file_returns_content():
 
 # Test the parse_sip_request function
 def test_parse_sip_request_valid_content_returns_parsed_data():
-    method, request_uri, headers, body = sip_parser.parse_sip_request(sample_content)
-    
+    method, request_uri, headers, body = sip_parser.parse_sip_request(
+        sample_content)
+
     # Asserting expected parsed data
     assert method == "INVITE"
     assert request_uri == "sip:bob@biloxi.com"
@@ -46,12 +48,12 @@ def test_parse_sip_request_valid_content_returns_parsed_data():
     }
     assert body == "abc"
 
-    
+
 # Test the header_exists function
 def test_header_exists_header_present_returns_true_with_value():
     _, _, headers, _ = sip_parser.parse_sip_request(sample_content)
     message, exists = sip_parser.header_exists("Via", headers)
-    
+
     assert exists
     assert message == "'Via' exists with value: 'SIP/2.0/UDP pc33.atlanta.com;branch=z9hG4bKnashds8'"
 
@@ -60,7 +62,6 @@ def test_header_exists_header_present_returns_true_with_value():
 def test_header_exists_header_absent_returns_false():
     _, _, headers, _ = sip_parser.parse_sip_request(sample_content)
     message, exists = sip_parser.header_exists('Unknown-Header', headers)
-        
+
     assert not exists
     assert message == "'Unknown-Header' does not exist in the SIP request."
-

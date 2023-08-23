@@ -1,21 +1,23 @@
 import sys
 
+
 # Function to read the content of a given SIP request filename.
 def read_sip_request(filename):
     with open(filename, 'r') as f:
         content = f.read()
     return content
 
+
 # extract method, request-uri, headers, and body.
 def parse_sip_request(content):
     lines = content.strip().split("\n")
-    
+
     request_line = lines[0].split()
     method = request_line[0]
     request_uri = request_line[1]
 
     headers = {}
-    
+
     body_index = content.find("\n\n")
     if body_index != -1:
         body = content[body_index + 2:]
@@ -30,6 +32,7 @@ def parse_sip_request(content):
 
     return method, request_uri, headers, body
 
+
 # Function to print parsed SIP request details.
 def print_parsed_content(method, request_uri, headers, body):
     print("The given SIP message is a request with:")
@@ -40,10 +43,11 @@ def print_parsed_content(method, request_uri, headers, body):
         print(f"{key}: {value}")
     print(f"body:\n{body}")
 
+
 # Function to check if a specific header exists in the parsed headers.
 def header_exists(header, headers):
     header_value = headers.get(header.lower())
-    
+
     if header_value:
         return f"'{header}' exists with value: '{header_value}'", True
     else:
