@@ -24,7 +24,7 @@ jobs:
         pip install pytest
 
     - name: Run script
-      run: python -m cli.py sample_sip_request.txt --print
+      run: python -m cli sample_sip_request.txt --print
 
     - name: Run tests
       run: pytest test_sip_parser.py
